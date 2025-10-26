@@ -7,6 +7,8 @@ local UEHelpers = require("UEHelpers")
 -- /Game/Weapon/GasGrenade/GasGrenadeProjectile.GasGrenadeProjectile_C
 -- /Game/Weapon/Shared/Projectiles/MolotovProjectile.MolotovProjectile_C
 -- /Game/Blueprint/Rat/BP_Rat_SuicideBomber.BP_Rat_SuicideBomber_C
+-- /Game/Weapon/ProximityMine/BP_ProxMineProjectile.BP_ProxMineProjectile_C
+
 
 local possibleGrenades = {
  'DecoyGrenadeProjectile_C',
@@ -14,8 +16,9 @@ local possibleGrenades = {
  'FlashBangGrenadeProjectile_C',
  'ThrusterGrenadeProjectile_C',
  'GasGrenadeProjectile_C',
- 'MolotovProjectile_C'
- 'BP_Rat_SuicideBomber_C'
+ 'MolotovProjectile_C',
+ 'BP_Rat_SuicideBomber_C',
+ 'BP_ProxMineProjectile_C'
 }
 
 local grenadeToReplace = "/Game/Weapon/DecoyGrenade/DecoyGrenadeProjectile.DecoyGrenadeProjectile_C"
