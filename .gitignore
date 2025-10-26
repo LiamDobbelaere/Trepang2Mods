@@ -1,5 +1,6 @@
 /SplitscreenMod
-/shared
+/shared/types
+/shared/jsbProfiler
 /LineTraceMod
 /Keybinds
 /jsbLuaProfilerMod
