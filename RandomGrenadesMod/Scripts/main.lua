@@ -77,7 +77,7 @@ local possibleGrenades = {
   'ThrusterGrenadeProjectile_C',
   'GasGrenadeProjectile_C',
   'MolotovProjectile_C',
-  'BP_Rat_SuicideBomber_C',
+--  'BP_Rat_SuicideBomber_C',
   'BP_ProxMineProjectile_C',
   'FragGrenadeProjectile_C',
   'ThrowingKnifeProjectile_C',
@@ -130,6 +130,23 @@ NotifyOnNewObject(grenadeToReplace, function(obj)
             local location = obj:K2_GetActorLocation()
             local rotation = obj:K2_GetActorRotation()
 
+            local forwardOffset = 100.0
+
+            -- Get forward vector (try actor method first, then fall back to Kismet)
+            local forward = nil
+            if obj.GetActorForwardVector then
+                forward = obj:GetActorForwardVector()
+            end
+
+            local spawnLocation = location
+            if forward then
+                spawnLocation = {
+                    X = location.X + forward.X * forwardOffset,
+                    Y = location.Y + forward.Y * forwardOffset,
+                    Z = location.Z + forward.Z * forwardOffset
+                }
+            end
+
             -- obj.K2_DestroyActor(obj)
             local banishLocation = {X=0, Y=0, Z=-99999}
             
@@ -143,7 +160,7 @@ NotifyOnNewObject(grenadeToReplace, function(obj)
                 obj:K2_SetActorLocation(banishLocation, false, nil, true)
             end
             
-            SpawnRandomGrenade(location, rotation)
+            SpawnRandomGrenade(spawnLocation, rotation)
             
             isReplacing = false
 
